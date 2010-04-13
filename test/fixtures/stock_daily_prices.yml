@@ -1,0 +1,9 @@
+up_trend:
+  stock_no:         1234
+  trade_date: 2010-02-20
+  open:             9980
+  close:            9999
+  high:            10023
+  low:              9980
+  volume:        9812394
+  adjusted:         true

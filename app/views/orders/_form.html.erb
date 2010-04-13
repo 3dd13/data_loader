@@ -1,0 +1,63 @@
+<% form_for(@order) do |f| %>
+<%= f.error_messages %>
+
+<div class="field">
+  <%= f.label :stock_no, "Stock No." %>
+  <%= f.text_field :stock_no %>
+</div>
+
+<div class="field">
+  <%= f.label :entry_date %>
+  <%= f.date_select :entry_date , :default => Date.today %>
+</div>
+
+<div class="field">
+  <%= f.label :entry_price %>
+  <%= f.text_field :entry_price %>
+</div>
+
+<div class="field">
+  <%= f.label :entry_commission %>
+  <%= f.text_field :entry_commission %>
+</div>
+
+<div class="field">
+  <%= f.label :exit_date %>
+  <%= f.date_select :exit_date , :default => Date.today %>
+</div>
+
+<div class="field">
+  <%= f.label :exit_price %>
+  <%= f.text_field :exit_price %>
+</div>
+
+<div class="field">
+  <%= f.label :exit_commission %>
+  <%= f.text_field :exit_commission %>
+</div>
+
+<div class="field">
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>
+</div>
+
+<div class="field">
+  <%= f.label :order_type %>
+  <%= f.text_field :order_type %>
+</div>
+
+<div class="field">
+  <%= f.label :status %>
+  <%= f.select :status, Order::ORDER_STATUSES %>
+</div>
+
+<div class="field">
+  <%= f.label :created_by %>
+  <%= f.text_field :created_by %>
+</div>
+
+<div class="actions">
+  <%= f.submit(@order.new_record? ? "Create" : "Update" ) %>
+</div>
+
+<% end %>

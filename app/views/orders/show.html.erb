@@ -1,0 +1,60 @@
+<h1>Edit Order</h1>
+
+<div class="field">
+  <%= label :stock_no, "Stock No." %>
+  <%= @order.stock_no %>
+</div>
+
+<div class="field">
+  <%= label :entry_date, "Entry Date" %>
+  <%= l(@order.entry_date, :format => :short) %>
+</div>
+
+<div class="field">
+  <%= label :entry_price, "Entry Price" %>
+  <%= @order.entry_price %>
+</div>
+
+<div class="field">
+  <%= label :entry_commission, "Entry Commission" %>
+  <%= @order.entry_commission %>
+</div>
+
+<div class="field">
+  <%= label :exit_date, "Exit Date" %>
+  <%= @order.exit_date ? l(@order.exit_date, :format => :short) : "" %>
+</div>
+
+<div class="field">
+  <%= label :exit_price, "Exit Price" %>
+  <%= @order.exit_price %>
+</div>
+
+<div class="field">
+  <%= label :exit_commission, "Exit Commission" %>
+  <%= @order.exit_commission %>
+</div>
+
+<div class="field">
+  <%= label :quantity, "Quantity" %>
+  <%= @order.quantity %>
+</div>
+
+<div class="field">
+  <%= label :order_type, "Order Type" %>
+  <%= @order.order_type %>
+</div>
+
+<div class="field">
+  <%= label :status, "Status" %>
+  <%= @order.status %>
+</div>
+
+<div class="field">
+  <%= label :created_by, "Created by" %>
+  <%= @order.created_by %>
+</div>
+
+<div class="actions">
+  <%= link_to 'Back', orders_url %>
+</div>

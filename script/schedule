@@ -1,0 +1,63 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'daemons'
+
+APP_DIR = File.join(File.dirname(File.expand_path(__FILE__)), '..')
+
+Daemons.run_proc(
+  'schedule',
+  :dir_mode => :normal, 
+  :dir => File.join(APP_DIR, 'log'),
+  :multiple => false,
+  :backtrace => true,
+  :monitor => true,
+  :log_output => true
+) do
+
+  # Daemonising changes the pwd to /, so we need to switch 
+  # back to RAILS_ROOT.
+  Dir.chdir(APP_DIR)
+
+  # Load our Rails environment.
+  require File.join('config', 'environment')
+
+  begin
+    # Initialise the OpenWFE scheduler object.
+    require 'openwfe/util/scheduler'
+    scheduler = OpenWFE::Scheduler.new
+    scheduler.start
+
+    # Now assign jobs to the scheduler (see API). For example:
+    scheduler.schedule("17 * * * *") { 
+      execute_yahoo_data_loader 
+    }
+
+    # Tell the scheduler to perform these jobs until the 
+    # process is stopped.
+    scheduler.join
+  rescue => e
+    RAILS_DEFAULT_LOGGER.warn "Exception in schedule: #{e.inspect}"
+    exit
+  end
+  
+  def execute_yahoo_data_loader
+    p "Clean up stock_daily_prices: " + Time.now.to_s
+    
+    StockDailyPrice.delete_all
+    stock_range = {:from => 1, :to => 1}
+    loader = YahooLoaderHelper.new(stock_range)
+    
+    p "Start downloading: #{stock_range.inspect} " + Time.now.to_s
+    
+    all_stock_prices = loader.retrieve_all
+    
+    p "Finish downloading: " + Time.now.to_s + "Saving to DB: " + Time.now.to_s
+    
+    all_stock_prices.each { |stock|
+      stock.save!
+    }
+    
+    p "After db save: " + Time.now.to_s
+  end
+end

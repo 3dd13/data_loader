@@ -1,0 +1,38 @@
+gain:
+  stock_no:           1234
+  entry_date:   2010-02-15
+  entry_price:        9951
+  entry_commission:    200
+  exit_date:    2010-03-15
+  exit_price:        10051
+  exit_commission:     200
+  quantity:            100
+  order_type:   long_entry
+  status:           exited
+  created_by:         lame
+ 
+loss:
+  stock_no:           1234
+  entry_date:   2010-02-05
+  entry_price:        9951
+  entry_commission:    200
+  exit_date:    2010-03-01
+  exit_price:         8165
+  exit_commission:     200
+  quantity:            100
+  order_type:   long_entry
+  status:           exited
+  created_by:          ger
+
+holding:
+  stock_no:           1234
+  entry_date:   2010-02-07
+  entry_price:        9951
+  entry_commission:    200
+#  exit_date:    
+#  exit_price:        
+#  exit_commission:     
+  quantity:            100
+  order_type:   long_entry
+  status:          holding
+  created_by:         evil

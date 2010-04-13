@@ -1,0 +1,45 @@
+<h1>Order Listing</h1>
+
+<table class="crud_list" id="client_list" style="border:1px solid #CCCCCC;">
+  <thead>
+    <tr>
+      <th>Stock No.</th>
+      <th>Entry Date</th>      
+      <th>Entry Price</th>
+      <th>Entry Commission</th>
+      <th>Exit Date</th>      
+      <th>Exit Price</th>
+      <th>Exit Commission</th>
+      <th>Quantity</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Created By</th>
+      <th></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td><%=h order.stock_no %></td>
+      <td><%=h l(order.entry_date, :format => :short) %></td>
+      <td><%=h order.entry_price %></td>
+      <td><%=h order.entry_commission %></td>
+      <td><%=h order.exit_date ? l(order.exit_date, :format => :short) : "" %></td>
+      <td><%=h order.exit_price %></td>
+      <td><%=h order.exit_commission %></td>
+      <td><%=h order.quantity %></td>
+      <td><%=h order.order_type %></td>
+      <td><%=h order.status %></td>
+      <td><%=h order.created_by %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="actions">
+  <%= link_to 'New Order', new_order_path %>
+</div>
+<div class="actions">
+  <%= link_to 'Home', home_url %>  
+</div>

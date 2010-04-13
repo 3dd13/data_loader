@@ -1,0 +1,42 @@
+<h1>Profit and Loss</h1>
+
+<div class="resource">
+  <div class="field">
+    <%= label :number_of_profit_orders, 'number_of_profit_orders' %>
+    <%= @number_of_profit_orders %>
+  </div>
+  <div class="field">
+    <%= label :total_profit, 'total_profit' %>
+    <%= @total_profit %>
+  </div>  
+  <div class="field">
+    <%= label :number_of_loss_orders, 'number_of_loss_orders' %>
+    <%= @number_of_loss_orders %>
+  </div>
+  <div class="field">
+    <%= label :total_loss, 'total_loss' %>
+    <%= @total_loss %>
+  </div>
+  <div class="field">
+    <%= label :number_of_holding_orders, 'number_of_holding_orders' %>
+    <%= @number_of_holding_orders %>
+  </div>
+  <div class="field">
+    <%= label :total_holding, 'total_holding' %>
+    <%= @total_holding %>
+  </div>  
+  <div class="field">
+    <%= label :total_commision, 'total_commision' %>
+    <%= @total_commision %>
+  </div>  
+  <div class="field">
+    <%= label :balance, 'Balance' %>
+    <%
+    # @balance
+    %>
+    <%= "N/A" %>
+  </div>
+  <div class="actions">
+    <%= link_to 'Home', home_url %>  
+  </div>
+</div>
